@@ -1,0 +1,285 @@
+---
+title: How I Built This Website
+description: I will explain in details to you how I built this website from scratch. This is a complicated learning experience from someone who self-learned how to code.
+date: 09/12/2022
+---
+
+<Introduction />
+
+I will explain in details to you how I built this website from scratch. 
+As someone who self-taught how to code, I learned a lot about web design 
+and JavaScript. This was a learning experience for me and I hope that 
+this blog will encourage and help you to create your own blog from 
+scratch (or if you just want to know my process). 
+
+<br/>
+
+<Heading 
+    tag="h1"
+    name="framework"
+>Framework</Heading>
+
+This blog uses <a href='https://nextjs.org/' target="_blank">NextJS</a> by <a href='https://twitter.com/vercel?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor' target="_blank">Vercel</a>. 
+In short, NextJS is a <a href='https://reactjs.org/' target="_blank">ReactJS</a>
+Framework that utilizes **both static & server rendering**, 
+which is also the main reason why I chose this 
+framwork. For personal blog, since most contents are static to 
+the readers (It doesn't change constantly), it would be more 
+optimized in **rendering speed and better user experience** if the 
+pages are loaded quick without fetching data from the server.
+
+
+<br/>
+
+For example, this current "How I Built This Website" blog post 
+is statically rendered, meaning it is rendered at build-time rather 
+than at request time. This also means that when you click onto this 
+post's directory, NextJS will redirect you to this pre-rendered page 
+right away without requesting it from the server. `getStaticProps` and 
+`getStaticPaths` were used to achieve this. 
+
+<br/>
+
+Here are the links to the 
+documents by Vercel if you would like more information on these functions:
+
+- <a href="https://nextjs.org/docs/api-reference/data-fetching/get-static-props" target="_blank">getStaticProps</a>
+- <a href="https://nextjs.org/docs/api-reference/data-fetching/get-static-paths" target="_blank">getStaticPaths</a>
+
+<br/>
+
+Furthermore, I like using NextJS or ReactJS because they support 
+many different packages, which help with my design and web building.
+
+<Heading 
+    tag="h1"
+    name="styling"
+>Styling</Heading>
+
+For this project, I tried to utilize [Tailwind CSS](https://tailwindcss.com/) to style my HTML. 
+[Tailwind CSS](https://tailwindcss.com/) is a CSS framework that helps with 
+styling your HTML without writing CSS. Instead, you would write pre-built classes straight into your 
+HTML classes. 
+
+For example, to enlarge and bold a text:
+
+<DisplayCode>
+    <h1 className="font-bold text-4xl">Sample Text</h1>
+</DisplayCode>
+
+<br/>
+
+In plain CSS you would write: 
+
+<CodeFrame>
+    ```HTML
+    <h1 class="big-bold-text">Sample Text</h1>
+    ```
+    ```CSS
+    .big-bold-text {
+        font-weight: bold;
+        font-size: 32px;
+    }
+    ```
+</CodeFrame>
+
+<br/>
+
+However, with Tailwind CSS, you would write straight into your HTML (or JS if you are 
+using a framework like this project):
+
+<CodeFrame>
+    ```HTML
+    <h1 class="font-bold text-4xl">
+        Sample Text
+    </h1>
+    ```
+</CodeFrame>
+
+<br/>
+
+You can read more about Tailwind CSS in their [official website](https://tailwindcss.com/).
+
+<br/>
+
+<Heading 
+    tag="h1"
+    name="markdown"
+>Markdown</Heading>
+
+I use [MDX](https://mdxjs.com/) to apply markdown into my blog posts. 
+It helps bringing the markdown to the next level by implementing dynamic interactivity, 
+embed components into your content rather than just simple markdown.
+
+<BlockQuote author="MDX">
+    MDX allows you to use JSX in your markdown content. You can import components, such as interactive charts or alerts, 
+    and embed them within your content. This makes writing long-form content with components a blast. 🚀
+</BlockQuote>
+
+To read more, follow this link to the [MDX official page]((https://mdxjs.com/docs/what-is-mdx/)).
+
+<br/>
+
+<Heading 
+    tag="h2"
+    name="next-mdx-remote"
+>Next-MDX-remote</Heading>
+
+[Next-MDX-remote](https://github.com/hashicorp/next-mdx-remote) helps implementing MDX into NextJS app easier. 
+It also supports frontmatter and highlighting, which allows me to utilize post's metadata and styling my markdown.
+
+There are different ways to use MDX in your markdown files: 
+
+- [@next/MDX](https://nextjs.org/docs/advanced-features/using-mdx)
+- [next-MDX-enhanced](https://github.com/hashicorp/next-mdx-enhanced)
+
+<br/>
+
+While @next/MDX is the basic implementation of MDX to NextJS app, next-MDX-enhanced helps with layouts, frontmatter, and paths of the MDX files. 
+Basically, it provides more utilities to enhances to developers experience. Generally, I prefer **next-MDX-remote** instead of next-MDX-enhanced because 
+"it is **~50% faster, more flexible with content storage, does not induce memory issues at scale, and fits much better with the way that data is intended to flow through next.js**." - 
+developers of next-MDX-enhanced and -remote libraries.
+
+<br/>
+
+For example, the some code blocks in this markdown are displayed through a NextJS component, which allows me to 
+**reuse the code interactive layout and add personal styling** with Tailwind CSS:
+
+<CodeFrame titles="MDX, CodeLayout.js">
+    ````JS
+    <CodeLayout>
+        ```
+        console.log("Hello, World!")
+        ```
+    </CodeLayout>
+    ````
+    ````JS
+    export default function CodeLayout({children}) {
+        return (
+            <div className="tailwindStyles">
+                {children}
+            </div>
+        )
+    }
+    ````
+</CodeFrame>
+
+This will result in: 
+
+```JS
+console.log("Hello, World!")
+```
+
+
+<br/>
+
+When deciding between which options work best for your blog, I recommend to read their official documentation for **the benefits and limitations**.
+
+<br/>
+
+<Heading 
+    tag="h2"
+    name="frontmatter"
+>Frontmatter</Heading>
+
+Frontmatter is basically metadata of your posts. For example, the metadata of this post is the title and the updated date at the top. 
+I use [gray-matter](https://www.npmjs.com/package/gray-matter) library, which is widely used to parse frontmatter data in markdown files. 
+
+<br/>
+
+It converts a markdown file like this:
+```
+---
+title: Hello
+slug: home
+---
+<h1>Hello world!</h1>
+```
+
+To this: 
+```
+{
+  content: '<h1>Hello world!</h1>',
+  data: { 
+    title: 'Hello', 
+    slug: 'home' 
+  }
+}
+```
+
+<br/>
+
+<Heading 
+    tag="h2"
+    name="syntax-highlighting"
+>Syntax highlighting</Heading>
+
+For code highlighting in the markdown file, I use [rehypeHighlight](https://github.com/rehypejs/rehype-highlight). 
+This is a plugin that works with MDX to allow highlighting syntax through adding classes to the codes when the HTML is rendered. 
+
+
+<BlockQuote author="rehypeHighlight">
+    This package is a <a href="https://github.com/unifiedjs/unified" target="_blank">unified</a> (<a href="https://github.com/rehypejs/rehype" target="_blank">rehype</a>)
+    plugin to apply syntax highlighting to code with `highlight.js`. `highlight.js` is pretty fast, relatively small, 
+    and a quite good syntax highlighter which has support for up to 190 different languages. This package bundles 35 <a href="https://github.com/wooorm/lowlight#syntaxes" target="_blank">common languages</a> 
+    by default and you can register more.
+</BlockQuote>
+
+<br/>
+
+<Heading 
+    tag="h2"
+    name="storing-markdowns"
+>Storing Markdowns</Heading>
+
+I have tried using [MongoDB](https://www.mongodb.com/) (a non-SQL database) to store markdowns. The idea is that I want a blog 
+that is interactive to myself. Similar to [Medium](https://medium.com/) and any other shared blogging websites, I initally 
+visualized my website to be able to write and update blog posts on the website. However, I realized that there are **many limitations** 
+to the method and I don't want to constraint my creativity for the sake of writing blog online. 
+
+<br/>
+
+For example, if I were to store my markdowns in an online database as strings, it would not allow me to implement different 
+components that help styling my website. A notable illustration here is my code frame:
+
+<CodeFrame titles="hello.js">
+    ```
+    function sayHello() {
+        console.log("Hello, World!")
+    }
+    
+    sayHello()
+    ```
+</CodeFrame>
+
+<br/>
+
+Since I write, store, and update my markdowns (MDX) locally, it allows me to treat each post uniquely, just like how different 
+code files. With this, I can implement an in-house code frame with **my individual styling and preference**. In the end, I think 
+I chose to store my markdowns locally because I want to **maximize the capability of MDX** so I could add my own creativity into my code.
+
+<br/>
+
+<Heading 
+    tag="h1"
+    name="final-words"
+>Final Words</Heading>
+
+At the end of the day, your website is still yours and there are so many different ways that you could create, design, and 
+add your personality and creativity into it. For this post, I just want to show you the way that I do it and please keep in 
+mind that I'm no expert in web development. **This is just one of my coding projects**. I'm still finding ways to optimize 
+the website while learning bit and pieces of web development and see where my coding hobby takes me. 
+
+<br/>
+
+I hope this blog is interesting and helpful to you. Please feel free to reach out, connect, and contact me through my 
+social medias if there is any question or suggestion. 
+
+- [LinkedIn](https://www.linkedin.com/in/minh-nguyen-63109019b/)
+- [Instagram](https://www.instagram.com/minhnguyen147/)
+- [GitHub](https://github.com/minhnguyen14797)
+
+<br/>
+
+Thank you for visiting and reading my post!
+

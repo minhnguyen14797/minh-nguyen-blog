@@ -1,26 +1,109 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
 
-* {
-  box-sizing: border-box;
-}
 
-@media (prefers-color-scheme: dark) {
+@layer base {
+
+  
   html {
-    color-scheme: dark;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 18px;
   }
-  body {
-    color: white;
-    background: black;
+
+  h1 {
+    @apply text-5xl
   }
+  h2 {
+    @apply text-3xl
+  }
+  h3 {
+    @apply text-xl
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .markdownFormat ul {
+    list-style-type: disc;
+    list-style-position: inside;
+  }
+
+  .markdownFormat>h1 {
+    @apply text-3xl font-bold my-2 mt-10
+  }
+
+  .markdownFormat>h2 {
+    @apply text-xl font-bold my-2 
+  }
+
+
+  .markdownFormat ol {
+    list-style-type: decimal;
+    list-style-position: inside;
+  }
+
+  .markdownFormat a {
+    @apply text-primary hover:underline decoration-2 underline-offset-2
+  }
+
+  .markdownFormat em {
+    @apply tracking-wide mx-1 text-stone-400
+  }
+
+  .markdownFormat>p, .markdownFormat li {
+    @apply leading-8
+  }
+
+  .markdownFormat>p>code, .markdownFormat>div>div>p>code, .markdownFormat li>code {
+    @apply bg-dark/10 p-1 rounded-md text-sm
+  }
+
+  .markdownFormat>pre>code {
+    @apply bg-darkBeige text-sm rounded-md my-2
+  }
+
+}
+
+@layer component {
+  .logo {
+    font-family: 'Changa', sans-serif;
+  }
+
+  .resetLi {
+    list-style-type: none;
+  }
+
+  .tocActive {
+    @apply text-primary !important
+  }
+
+  .burger-icon-1, .burger-icon-1-a, .burger-icon-2, .burger-icon-2-a, .burger-icon-3, .burger-icon-3-a {
+    height: 3px;
+    @apply bg-dark absolute left-[8px] top-[15px] w-[32px] rounded-xl;
+    transition: all 400ms cubic-bezier(.84,.06,.52,1.8);
+  }
+
+  .burger-icon-1 {
+    transform: translateY(-8px)
+  }
+
+  .burger-icon-3 {
+    transform: translateY(8px)
+  }
+
+  .burger-icon-1-a {
+    transform: rotate(45deg)
+  }
+
+  .burger-icon-2-a {
+    opacity: 0;
+  }
+
+  .burger-icon-3-a {
+    transform: rotate(-45deg)
+  }
+
 }

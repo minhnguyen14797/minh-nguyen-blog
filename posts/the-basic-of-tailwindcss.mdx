@@ -1,0 +1,211 @@
+---
+title: The Basic of Tailwind CSS
+description: Tailwind CSS is a fast and flexible tool that you can use to style your HTML without writing them to a static CSS file.
+date: 09/14/2022
+---
+
+<Introduction />
+
+Traditionally, whenever you want to create an aesthetically pleasing website,
+you would need to write CSS in a separate file. With Tailwind CSS, you can apply
+style elements by applying **pre-existing classes** directly in your HTML.
+This approach removes the need to write a single line of CSS.
+
+<br/>
+
+Of course, you might think that "*Isn't this would just make your HTML, more
+messy and even less readible?*". The answer is yes, but no.
+Sure, styling your HTML with bunch of classes can make your code long and 
+less readible. But, when you actually implement Tailwind CSS into your code, 
+you will quickly notice some benefits:
+
+<br/>
+
+- **No more inventing class names**. You can stop coming up with silly class names, such as 
+`navbar-inner-brand`. Since you can directly style with pre-defined classes in your HTML, there 
+is no need for making class names.
+- **No more giant CSS files with hundreds of lines**. With traditional CSS, your CSS file will get 
+bigger as your project expands. Tailwind CSS eliminates the use of a single CSS file and instead, 
+separate them into your HTML.
+- **Local changes feels safer**. Making changes in your global CSS can affect other components in 
+your project if you aren't careful due to confusing class names. Since classes are local to each HTML file 
+you don't have to worry about messing up your `Content` while styling your `Navbar`.
+
+
+<Heading
+  tag="h1"
+  name="demonstration"
+  >
+Utility-first Fundamentals
+</Heading>
+
+You can apply primitive utilities to build complex components. Pre-existing classes mimic CSS styling without 
+writing CSS code. 
+
+<br/>
+
+From this:
+
+<CodeFrame titles="index.html, styles.css, combined.html">
+```HTML
+<div class="chat-notification">
+  <div class="chat-notification-logo-wrapper">
+    <img class="chat-notification-logo" src="/img/logo.svg" alt="ChitChat Logo">
+  </div>
+  <div class="chat-notification-content">
+    <h4 class="chat-notification-title">ChitChat</h4>
+    <p class="chat-notification-message">You have a new message!</p>
+  </div>
+</div>
+```
+
+```CSS
+.chat-notification {
+  display: flex;
+  max-width: 24rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.chat-notification-logo-wrapper {
+  flex-shrink: 0;
+}
+.chat-notification-logo {
+  height: 3rem;
+  width: 3rem;
+}
+.chat-notification-content {
+  margin-left: 1.5rem;
+  padding-top: 0.25rem;
+}
+.chat-notification-title {
+  color: #1a202c;
+  font-size: 1.25rem;
+  line-height: 1.25;
+}
+.chat-notification-message {
+  color: #718096;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+```
+
+</CodeFrame>
+
+<br/>
+
+to this:
+
+<CodeFrame titles="index.html">
+```html
+<div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4">
+  <div class="shrink-0">
+    <img class="h-12 w-12" src="/img/logo.svg" alt="ChitChat Logo">
+  </div>
+  <div>
+    <div class="text-xl font-medium text-black">ChitChat</div>
+    <p class="text-slate-500">You have a new message!</p>
+  </div>
+</div>
+```
+</CodeFrame>
+
+<br/>
+
+With Tailwind CSS, it removes the need to write `styles.css`. Instead, it has provided you 
+classes to style your HTML, such as `p-6` for `padding: 6px` and `bg-white` for `background-color: white`.
+
+<br/>
+
+This reduces the need for a separate CSS file so you can work locally in your HTML 
+(which can be very helpful when you are also working with a [React Framework](https://tailwindcss.com/docs/guides/create-react-app)).
+
+<BlockQuote author="Tailwind CSS">
+  Aside from that, maintaining a utility-first CSS project turns out to be a lot easier than maintaining a 
+  large CSS codebase, simply because HTML is so much easier to maintain than CSS. Large companies like GitHub, 
+  Netflix, Heroku, Kickstarter, Twitch, Segment, and more are using this approach with great success.
+</BlockQuote>
+
+<br/>
+
+Here are some articles about Tailwind CSS to check out: 
+
+- [By The Numbers: A Year and a Half with Atomic CSS](https://johnpolacek.medium.com/by-the-numbers-a-year-and-half-with-atomic-css-39d75b1263b4) by John Polacek
+- [Building a Scalable CSS Architecture](https://blog.algolia.com/redesigning-our-docs-part-4-building-a-scalable-css-architecture/) by Sarah Dayan of Algolia
+- [No, Utility Classes Aren't the Same As Inline Styles](https://frontstuff.io/no-utility-classes-arent-the-same-as-inline-styles) by Sarah Dayan of Algolia
+- [Diana Mounter on using utility classes at GitHub](http://www.fullstackradio.com/75), a podcast interview
+
+<Heading
+  tag="h1"
+  name="handling-hover-focus-and-other-states"
+  >
+  Handling Hover, Focus, and Other States
+</Heading>
+
+Different modifiers of states can be added to the beginning of the utility classes for specific conditions. 
+For example, if you want `bg-sky-400` when you hover over an element, you can use `hover:bg-sky-400`.
+
+
+<DisplayCode modifiers='center'>
+  <button className="py-1 px-5 font-bold rounded-md bg-sky-300 hover:bg-sky-400">Submit</button>
+</DisplayCode>
+
+Tailwind includes different modifiers for you, including: 
+
+- **Pseudo-classes** (`:hover`, `:required`, `:first-child`, ...)
+- **Pseudo-elements** (`::selection`, `::before`, ...)
+- **Media queries** (responsive breakpoints, ...)
+- **Attribute selectors**
+
+<br/>
+
+The modifiers can also be stacked with each other: 
+
+<CodeFrame>
+```HTML
+<button class="md:hover:bg-sky-400">
+  Submit
+</button>
+```
+</CodeFrame>
+
+This will result in a hover effect only at medium screen size. 
+
+<Heading
+  tag="h1"
+  name="responsive-design"
+  >
+Responsive design
+</Heading>
+
+Tailwind also provides you pre-defined breakpoints, which you can change if you would like to. 
+
+- `sm`: 640px
+- `md`: 768px
+- `lg`: 1024px
+- `xl`: 1280px
+- `2xl`: 1536px
+
+<Heading
+  tag='h1'
+  name='official-documentation'
+>
+Offical documentation
+</Heading>
+
+I think the **main reason that I like to work with Tailwind** is that it simplifies styling 
+and file structuring for me. 
+
+<br/>
+
+- It helps me work a bit more efficiently with **inline HTML styling**. 
+- I think the wording of pre-defined classes are **easy to learn and understand** when you read the code.
+- It makes creating **responsive design** easy and more understandable without using media queries in CSS. 
+- The **official documentation** is very **well written** and clearly illustrated for users.
+
+<br/>
+
+This is just a quick introduction on Tailwind CSS and I would highly recommend read [the official documentation on their website](https://tailwindcss.com/) 
+to understand more about the framework and how you can implement it into your own projects.

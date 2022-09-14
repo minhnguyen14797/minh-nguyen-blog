@@ -1,0 +1,15 @@
+.inAndOutAnimation {
+    animation: inAndOut 5s infinite ease-in-out
+}
+
+@keyframes inAndOut {
+    0% {
+        scale: 1;
+    }    
+    50% {
+        scale: 1.05
+    }
+    100% {
+        scale: 1;
+    }
+}

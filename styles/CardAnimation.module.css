@@ -1,0 +1,14 @@
+.cardHoverArrow div h1 span {
+    @apply text-primary text-3xl;
+    opacity: 0;
+    transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+    display: inline-block;
+    font-size: 28px;
+    
+}
+
+
+.cardHoverArrow:hover > div h1 span {
+    opacity: 1;
+    transform: translateX(50%)
+}

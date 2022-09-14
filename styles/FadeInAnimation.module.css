@@ -1,0 +1,61 @@
+.fadeInAnimation {
+    opacity: 1;
+    animation: fadeIn 200ms ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.zoomInAnimation {
+    animation: zoomIn 200ms ease-in-out;
+}
+
+@keyframes zoomIn {
+    0% {
+        scale: 0;
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+.burgerFadeIn {
+    animation: burgerFadeIn 500ms ease-in-out;
+}
+
+@keyframes burgerFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px)
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+.burgerHover:hover :first-child {
+    transform: translateY(-10px);
+    scale: 1.02
+}
+
+.burgerHover:hover :last-child {
+    transform: translateY(10px);
+    scale: 1.02
+}
+
+.burgerXHover:hover span {
+    scale: 1.1
+}
