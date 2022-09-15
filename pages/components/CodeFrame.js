@@ -5,7 +5,6 @@ const MAINCOLOR = 'bg-darkBeige'
 const BARCOLOR = 'bg-stone-300'
 
 export default function CodeFrame({children, titles}) {
-
   // Separate titles like this:
   // titles = "file1.js, file2.html" 
 

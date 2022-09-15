@@ -13,7 +13,7 @@ const LinkItem = ({item, link}) => {
     const itemStyles = 'hover:text-primary'
     return(
         <li className="mt-1 resetLi">
-            <a target='_blank' href={link} className={itemStyles}>
+            <a href={link} className={itemStyles}>
                 {item}
             </a>
         </li>

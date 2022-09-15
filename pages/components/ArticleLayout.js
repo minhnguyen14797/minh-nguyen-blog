@@ -78,7 +78,7 @@ export default function ArticleLayout({frontMatter, children}) {
       })
     )
     
-  }, [markdownRef.current])
+  }, [])
   
   const TableOfContents = () => {
       return (
