@@ -1,8 +1,8 @@
 import Head from "next/head"
 import { getAllTitles } from "../utils/posts"
-import BaseLayout from "./components/BaseLayout"
-import Card from "./components/Card"
-import Tag from "./components/Tag"
+import BaseLayout from "../components/BaseLayout"
+import Card from "../components/Card"
+import Tag from "../components/Tag"
 
 
 export default function Home({res}) {

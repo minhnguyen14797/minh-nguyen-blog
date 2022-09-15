@@ -1,7 +1,4 @@
-
-
 const MAINCOLOR = 'bg-darkBeige'
-const BARCOLOR = 'bg-stone-300'
 
 export default function DisplayCode({children}) {
 
@@ -17,9 +14,3 @@ export default function DisplayCode({children}) {
         
     )
 }
-
-
-
-// <div className={`${BARCOLOR} px-2 py-1 rounded-t-md text-dark`}>
-// <span className="ml-2">Example</span>
-// </div>

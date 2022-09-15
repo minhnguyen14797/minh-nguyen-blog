@@ -1,5 +1,5 @@
 import { useState, useRef } from "react"
-import fadeInStyles from '../../styles/FadeInAnimation.module.css'
+import fadeInStyles from '../styles/FadeInAnimation.module.css'
 
 const MAINCOLOR = 'bg-darkBeige'
 const BARCOLOR = 'bg-stone-300'

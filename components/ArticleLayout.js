@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import BaseLayout from './BaseLayout'
-import formattedDate from '../../utils/dateFormat'
+import formattedDate from '../utils/dateFormat'
 import { useRef, useEffect, useState } from 'react'
-import { tocParse } from '../../utils/tocParse'
+import { tocParse } from '../utils/tocParse'
 
 
 

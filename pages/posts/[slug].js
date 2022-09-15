@@ -1,10 +1,10 @@
-import ArticleLayout from '../components/ArticleLayout'
+import ArticleLayout from '../../components/ArticleLayout'
 import { MDXRemote } from 'next-mdx-remote'
-import CodeFrame from '../components/CodeFrame'
-import DisplayCode from '../components/DisplayCode'
-import BlockQuote from '../components/BlockQuote'
+import CodeFrame from '../../components/CodeFrame'
+import DisplayCode from '../../components/DisplayCode'
+import BlockQuote from '../../components/BlockQuote'
 import { getPostFilePaths, getPostBySlug } from '../../utils/posts'
-import Heading, { Introduction } from '../components/MarkdownComponents'
+import { Heading, Introduction } from '../../components/MarkdownComponents'
 
 
 export default function PostPage({ source, frontMatter }) {

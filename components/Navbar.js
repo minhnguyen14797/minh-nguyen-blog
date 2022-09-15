@@ -1,6 +1,6 @@
 import Link from "next/link"
-import styles from '../../styles/LogoHover.module.css'
-import fadeStyles from '../../styles/FadeInAnimation.module.css'
+import styles from '../styles/LogoHover.module.css'
+import fadeStyles from '../styles/FadeInAnimation.module.css'
 import { useState } from "react"
 
 const Logo = () => {

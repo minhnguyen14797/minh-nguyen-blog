@@ -1,5 +1,5 @@
-import formattedDate from "../../utils/dateFormat"
-import styles from '../../styles/CardAnimation.module.css'
+import formattedDate from "../utils/dateFormat"
+import styles from '../styles/CardAnimation.module.css'
 
 const CardTitle = ({title}) => {
     const articleTitleStyles = 'text-xl font-bold tracking-wide capitalize'
