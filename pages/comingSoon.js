@@ -1,4 +1,4 @@
-import BaseLayout from "./components/BaseLayout";
+import BaseLayout from "../components/BaseLayout";
 import Head from "next/head";
 import styles from '../styles/comingSoonAnimation.module.css'
 
