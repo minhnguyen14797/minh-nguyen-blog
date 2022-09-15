@@ -1,4 +1,4 @@
-export function Heading({children, tag, name, title}) {
+export default function Heading({children, tag, name}) {
     let specialTagStyles = 'absolute -top-[80px]'
     const Tag = ({children}) => {
         const styles = 'relative capitalize'

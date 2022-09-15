@@ -4,7 +4,7 @@ import CodeFrame from '../components/CodeFrame'
 import DisplayCode from '../components/DisplayCode'
 import BlockQuote from '../components/BlockQuote'
 import { getPostFilePaths, getPostBySlug } from '../../utils/posts'
-import { Heading, Introduction } from '../components/MarkdownComponents'
+import Heading, { Introduction } from '../components/MarkdownComponents'
 
 
 export default function PostPage({ source, frontMatter }) {
