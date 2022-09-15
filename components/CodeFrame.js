@@ -1,5 +1,6 @@
 import { useState, useRef } from "react"
 import fadeInStyles from '../styles/FadeInAnimation.module.css'
+import Image from "next/image"
 
 const MAINCOLOR = 'bg-darkBeige'
 const BARCOLOR = 'bg-stone-300'
@@ -87,7 +88,12 @@ export default function CodeFrame({children, titles}) {
           <div className={`w-6 text-md text-green-600/75 ${fadeInStyles.fadeInAnimation} transition duration-200 ease-in-out`}>
             ✓
           </div> : 
-          <img className={`opacity-50 w-6 px-0.5 hover:opacity-80 ${fadeInStyles.zoomInAnimation}`} src="/copy-icon.svg" />
+          <Image 
+            className={`opacity-50 px-0.5 hover:opacity-80 ${fadeInStyles.zoomInAnimation}`} 
+            src="/copy-icon.svg" 
+            width={24}
+            height={24}
+          />
         }
       </button>
     )
@@ -96,12 +102,13 @@ export default function CodeFrame({children, titles}) {
   return (
     <div className="flex justify-center my-2">
       <div className={`${BARCOLOR} pt-2 rounded-md flex-col flex w-full`}>
+      
         <div className="flex flex-row justify-between h-fit">
           <div className="ml-2">
             <DisplayLanguages />
           </div>
-          
         </div>
+
         <div className="relative">
           <DisplayChildren />
           {CopyButton()}

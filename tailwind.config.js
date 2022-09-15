@@ -7,6 +7,7 @@ const COLORS = require('./constants/colors')
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/*.{js,jsx}",
     "./posts/*.{mdx,md}"
   ],
   theme: {
