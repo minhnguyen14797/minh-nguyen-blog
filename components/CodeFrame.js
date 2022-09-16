@@ -93,6 +93,7 @@ export default function CodeFrame({children, titles}) {
             src="/copy-icon.svg" 
             width={24}
             height={24}
+            alt="copy-icon"
           />
         }
       </button>

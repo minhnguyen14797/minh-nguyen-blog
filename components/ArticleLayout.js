@@ -106,7 +106,7 @@ export default function ArticleLayout({frontMatter, children}) {
       <div className='flex flex-row justify-center'>
 
       
-        <div className='grid grid-cols-3 max-w-[1200px] px-12'>
+        <div className='grid grid-cols-3 max-w-[1200px] xl:px-12 lg:px-12 md:px-12 sm:px-4 px-4'>
           <div className={mainStyles}>
             <div className={frontMatterStyles}>
               <h1 className={titleStyles}>{frontMatter.title}</h1>
