@@ -2,6 +2,7 @@ import Link from "next/link"
 import styles from '../styles/LogoHover.module.css'
 import fadeStyles from '../styles/FadeInAnimation.module.css'
 import { useState } from "react"
+import useToggleTheme, { toggleTheme } from "../utils/useToggleTheme"
 
 const Logo = () => {
     const logoHoverStyles = styles['hover-underline-animation']
@@ -29,34 +30,34 @@ const NavItem = ({children, href}) => {
     )
 } 
 
-const SubscribeButton = () => {
-    const buttonHoverStyles = 'hover:bg-red-600'
-    const [text, setText] = useState("Subscribe")
+// const SubscribeButton = () => {
+//     const buttonHoverStyles = 'hover:bg-red-600'
+//     const [text, setText] = useState("Subscribe")
     
-    const handleSubscribe = () => {
-        setText("JK!!")
-        setTimeout(() => {
-            setText("Subscribe")
-        }, 2000)
-    }
+//     const handleSubscribe = () => {
+//         setText("JK!!")
+//         setTimeout(() => {
+//             setText("Subscribe")
+//         }, 2000)
+//     }
 
-    return(
-        <button 
-            onClick={handleSubscribe}
-            className={`w-[120px] bg-danger text-light py-2 px-4 rounded-lg lg:inline md:inline sm:hidden hidden ${buttonHoverStyles}`}>
-            {text}
-        </button>
-    )
-}
+//     return(
+//         <button 
+//             onClick={handleSubscribe}
+//             className={`w-[120px] bg-danger text-light py-2 px-4 rounded-lg lg:inline md:inline sm:hidden hidden ${buttonHoverStyles}`}>
+//             {text}
+//         </button>
+//     )
+// }
 
-const BurgerSubscribeButton = () => {
-    const buttonHoverStyles = 'hover:bg-red-600'
-    return(
-        <button className={`bg-danger text-light py-1 px-3 rounded-lg ${buttonHoverStyles}`}>
-            Subscribe
-        </button>
-    )
-}
+// const BurgerSubscribeButton = () => {
+//     const buttonHoverStyles = 'hover:bg-red-600'
+//     return(
+//         <button className={`bg-danger text-light py-1 px-3 rounded-lg ${buttonHoverStyles}`}>
+//             Subscribe
+//         </button>
+//     )
+// }
 
 
 const Burger = ({open, setOpen}) => {
@@ -102,16 +103,36 @@ const NavItemBurger = ({children, href}) => {
     )
 } 
 
+const DarkModeToggle = () => {
+    const darkHoverStyles = 'hover:bg-sky-500'
+    const toggleDMS = 'dark:bg-light dark:text-dark'
+    const [theme, setTheme] = useToggleTheme()
+    
+    function handleDarkModeToggle() {
+        toggleTheme(theme, setTheme)
+    }
+    
+    return (
+        <button 
+            onClick={handleDarkModeToggle} 
+            className={
+                `font-bold py-1 px-3 rounded-full bg-secondary text-white w-[35px] h-[35px] hidden 
+                justify-center items-center lg:flex md:flex sm:hidden ${darkHoverStyles} ${toggleDMS}`
+            }>
+            {theme == 'light' ? "L" : "D"}
+        </button>
+    )
+}
 
 export default function Navbar() {
-    const navbarStyles = `text-dark py-3 px-10 flex-row justify-between flex items-center`
+    const navbarStyles = `py-3 px-10 flex-row justify-between flex items-center`
     const [open, setOpen] = useState(false)
 
     const AllNavItems = ({type}) => [
         ['Home', '/'], 
-        ['Portfolio', '/comingSoon'], 
-        ['Fun', '/comingSoon'], 
-        ['Goodies', '/comingSoon']
+        ['Portfolio', '/coming-soon'], 
+        ['Fun', '/coming-soon'], 
+        ['Goodies', '/coming-soon']
     ].map((item, index) => {
             
             if (type == 'burger') {
@@ -133,14 +154,15 @@ export default function Navbar() {
     return (
         <>
             <nav className={navbarStyles}>
-                <div className="flex flex-col justify-center">
+                <div className="flex flex-row items-center justify-start w-full">
                     <Logo />
                 </div>
                 <NavList>
                     <AllNavItems />
                 </NavList>
-                <div>
-                    <SubscribeButton />
+                <div className="flex flex-row items-center justify-end w-[75%]">
+                    {/* <SubscribeButton /> */}
+                    <DarkModeToggle />
                     <Burger open={open} setOpen={setOpen} />
                 </div>
             </nav>
@@ -148,7 +170,7 @@ export default function Navbar() {
                 open ? 
                 <NavBurger>
                     <AllNavItems type='burger'/>
-                    <BurgerSubscribeButton />
+                    {/* <BurgerSubscribeButton /> */}
                 </NavBurger> :
                 ""
             }

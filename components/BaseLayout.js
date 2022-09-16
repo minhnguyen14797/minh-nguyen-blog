@@ -3,7 +3,8 @@ import Navbar from './Navbar'
 
 export default function BaseLayout({children}) {
 
-    const baseFlexStyles = 'flex flex-col bg-beige h-100'
+  const baseDMS = 'dark:bg-darkBG dark:text-light transition duration-200 ease-in-out'
+  const baseFlexStyles = `flex flex-col bg-beige text-dark h-100 ${baseDMS}`
 
   return (
     <div className={baseFlexStyles}>

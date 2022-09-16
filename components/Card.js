@@ -15,7 +15,7 @@ const CardTitle = ({title}) => {
 
 const CardBody = ({description, date}) => {
     const descriptionStyles = 'mt-2 text-sm'
-    const dateStyles = 'text-stone-400 text-sm mt-3'
+    const dateStyles = 'text-muted text-sm mt-3'
     return (
         <div>
             <p className={descriptionStyles}>{description}</p>
@@ -27,7 +27,7 @@ const CardBody = ({description, date}) => {
 
 export default function Card({data}) {
 
-    const cardHoverStyles = `hover:border-primary transition duration-200 ease-in-out`
+    const cardHoverStyles = `hover:border-primary`
     const cardStyles = `pb-2 rounded-xl w-full h-fit ${cardHoverStyles} ${styles.cardHoverArrow}`
 
     return (

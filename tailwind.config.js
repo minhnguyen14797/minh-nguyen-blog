@@ -21,9 +21,14 @@ module.exports = {
         warning: COLORS.warning,
         info: COLORS.info,
         beige: COLORS.beige,
-        darkBeige: COLORS.darkBeige
+        darkBeige: COLORS.darkBeige,
+        darkBG: COLORS.darkBG,
+        muted: COLORS.muted,
+        dark2: COLORS.dark2,
+        dark3: COLORS.dark3,
       }
     },
   },
+  darkMode: 'class',
   plugins: [],
 }

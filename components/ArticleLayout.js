@@ -10,7 +10,7 @@ import { tocParse } from '../utils/tocParse'
 export default function ArticleLayout({frontMatter, children}) {
   // 
   const mainStyles = 'flex flex-col py-12 lg:py-24 md:py-24 sm:py-12 col-span-3 lg:col-span-2 md:col-span-3 sm:col-span-3  '
-  const authorStyles = 'text-gray-500'
+  const authorStyles = 'text-muted'
   const titleStyles = 'font-bold mb-4 tracking-wide'
   const frontMatterStyles = 'pb-6 text-start'
 
@@ -70,7 +70,7 @@ export default function ArticleLayout({frontMatter, children}) {
             href={`#${data.link}`}
             name={`${data.link}`}
             id='toc'
-            className={`text-dark/90 hover:text-primary transition duration-100 ease-in-out ${indentStyling}`}
+            className={`hover:text-primary transition duration-100 ease-in-out ${indentStyling}`}
           >
             {data.title}
           </a>

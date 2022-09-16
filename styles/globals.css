@@ -50,7 +50,7 @@
   }
 
   .markdownFormat em {
-    @apply tracking-wide mx-1 text-stone-400
+    @apply tracking-wide mx-1 text-muted
   }
 
   .markdownFormat>p, .markdownFormat li {
@@ -58,11 +58,11 @@
   }
 
   .markdownFormat>p>code, .markdownFormat>div>div>p>code, .markdownFormat li>code {
-    @apply bg-dark/10 p-1 rounded-md text-sm
+    @apply bg-dark/10 p-1 rounded-md text-sm dark:bg-light/10
   }
 
   .markdownFormat>pre>code {
-    @apply bg-darkBeige text-sm rounded-md my-2
+    @apply text-sm rounded-md my-2
   }
 
 }
@@ -82,7 +82,7 @@
 
   .burger-icon-1, .burger-icon-1-a, .burger-icon-2, .burger-icon-2-a, .burger-icon-3, .burger-icon-3-a {
     height: 3px;
-    @apply bg-dark absolute left-[8px] top-[15px] w-[32px] rounded-xl;
+    @apply bg-dark absolute left-[8px] top-[15px] w-[32px] rounded-xl dark:bg-light;
     transition: all 400ms cubic-bezier(.84,.06,.52,1.8);
   }
 

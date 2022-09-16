@@ -2,8 +2,8 @@ import { useState, useRef } from "react"
 import fadeInStyles from '../styles/FadeInAnimation.module.css'
 import Image from "next/image"
 
-const MAINCOLOR = 'bg-darkBeige'
-const BARCOLOR = 'bg-stone-300'
+const MAINCOLOR = 'bg-darkBeige dark:bg-dark3'
+const BARCOLOR = 'bg-stone-300 dark:bg-dark2'
 
 export default function CodeFrame({children, titles}) {
   // Separate titles like this:
@@ -41,7 +41,7 @@ export default function CodeFrame({children, titles}) {
           if (currentCode == index) {
             activeStyles = `${MAINCOLOR}`
           } else {
-            activeStyles = `text-gray-600/50 hover:text-gray-700/75`
+            activeStyles = `text-gray-600/50 hover:text-gray-700/75 dark:text-gray-400/50 dark:hover:text-gray-500/50`
           }
           
           return (
@@ -101,7 +101,7 @@ export default function CodeFrame({children, titles}) {
   }
 
   return (
-    <div className="flex justify-center my-2">
+    <div className="flex justify-center my-2 text-dark dark:text-gray-400">
       <div className={`${BARCOLOR} pt-2 rounded-md flex-col flex w-full`}>
       
         <div className="flex flex-row justify-between h-fit">

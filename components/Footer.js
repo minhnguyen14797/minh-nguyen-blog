@@ -30,7 +30,7 @@ export default function Footer() {
             )
     })
 
-    const footerStyles = `text-light bg-dark pt-12 pb-4 px-6 w-full`
+    const footerStyles = `text-light bg-dark pt-12 pb-4 px-6 w-full dark:bg-dark3`
 
     return (
         <div className={footerStyles}>

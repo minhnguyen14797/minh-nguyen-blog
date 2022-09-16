@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import '../styles/highlight.css'
 
+
 function MyApp({ Component, pageProps }) {
   return (
     <Component {...pageProps} />

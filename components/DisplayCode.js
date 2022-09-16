@@ -1,4 +1,4 @@
-const MAINCOLOR = 'bg-darkBeige'
+const MAINCOLOR = 'bg-darkBeige text-dark dark:bg-dark3'
 
 export default function DisplayCode({children}) {
 
