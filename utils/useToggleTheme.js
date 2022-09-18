@@ -1,5 +1,4 @@
 import { useState } from "react"
-
 import { useEffect } from "react"
 
 export default function useToggleTheme() {
@@ -15,7 +14,9 @@ export default function useToggleTheme() {
             }
         }, [setTheme])
         
-        if (theme == 'dark') document.documentElement.classList.add('dark')
+        if (theme == 'dark') {
+            document.documentElement.classList.add('dark')
+        }
 
         return [theme, setTheme]
     }

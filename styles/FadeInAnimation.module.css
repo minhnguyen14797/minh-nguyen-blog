@@ -31,6 +31,19 @@
     }
 }
 
+.simpleFadeHover > button img {
+    opacity: 0;
+    transition: 200ms ease-in-out;
+}
+
+.simpleFadeHover:hover > button img{
+    opacity: 0.5;
+}
+
+.simpleFadeHover > button img:hover {
+    opacity: 1;
+}
+
 .burgerFadeIn {
     animation: burgerFadeIn 500ms ease-in-out;
 }

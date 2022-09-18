@@ -1,5 +1,7 @@
 import formattedDate from "../utils/dateFormat"
 import styles from '../styles/CardAnimation.module.css'
+import Link from "next/link"
+
 
 const CardTitle = ({title}) => {
     const articleTitleStyles = 'text-xl font-bold tracking-wide capitalize'
@@ -28,12 +30,12 @@ const CardBody = ({description, date}) => {
 export default function Card({data}) {
 
     const cardHoverStyles = `hover:border-primary`
-    const cardStyles = `pb-2 rounded-xl w-full h-fit ${cardHoverStyles} ${styles.cardHoverArrow}`
+    const cardStyles = `pb-2 rounded-xl w-full h-fit cursor-pointer ${cardHoverStyles} ${styles.cardHoverArrow}`
 
     return (
         
             <div className="my-5">
-                <a href={data.link}>
+                <Link href={data.link}>
                     <div className={cardStyles}>
                         <CardTitle title={data.title} />
                         <CardBody
@@ -41,7 +43,7 @@ export default function Card({data}) {
                             date={formattedDate(data.date)}
                         />
                     </div>
-                </a>
+                </Link>
             </div>
         
     )

@@ -1,10 +1,15 @@
 import '../styles/globals.css'
 import '../styles/highlight.css'
+import { ThemeProvider } from '../providers/ThemeProvider'
 
 
 function MyApp({ Component, pageProps }) {
+  
   return (
-    <Component {...pageProps} />
+    <ThemeProvider>
+      <Component {...pageProps} />
+    </ThemeProvider>
+    
   )
 }
 

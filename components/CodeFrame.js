@@ -69,6 +69,7 @@ export default function CodeFrame({children, titles}) {
     }
 
   const DisplayChildren = () => {
+
     return (
       <div ref={codeRef} className={`${MAINCOLOR} text-sm rounded-b-md`}>
         {multiCodes ? children[currentCode] : children}
@@ -85,11 +86,11 @@ export default function CodeFrame({children, titles}) {
       >
         {
           copyState ? 
-          <div className={`w-6 text-md text-green-600/75 ${fadeInStyles.fadeInAnimation} transition duration-200 ease-in-out`}>
+          <div className={`w-6 text-lg text-green-600/75 ${fadeInStyles.fadeInAnimation} transition duration-200 ease-in-out`}>
             ✓
           </div> : 
           <Image 
-            className={`opacity-50 px-0.5 hover:opacity-80 ${fadeInStyles.zoomInAnimation}`} 
+            className={`px-0.5 ${fadeInStyles.zoomInAnimation}`} 
             src="/copy-icon.svg" 
             width={24}
             height={24}
@@ -99,6 +100,7 @@ export default function CodeFrame({children, titles}) {
       </button>
     )
   }
+
 
   return (
     <div className="flex justify-center my-2 text-dark dark:text-gray-400">
@@ -110,9 +112,9 @@ export default function CodeFrame({children, titles}) {
           </div>
         </div>
 
-        <div className="relative">
+        <div className={`relative ${fadeInStyles.simpleFadeHover}`}>
           <DisplayChildren />
-          {CopyButton()}
+          <CopyButton />
         </div>
         
       </div>

@@ -15,7 +15,7 @@
 .hljs {
     background: none;
     color: var(--dark-color);
-    @apply dark:text-gray-400
+    @apply dark:text-light
 }
 
 .hljs-tag, .hljs-selector-attr, 
@@ -33,15 +33,12 @@
     color: var(--primary-color)
 }
 
-
-
 .hljs-attr, .hljs-attribute, .hljs-literal, .hljs-meta, .hljs-operator, .hljs-variable, .hljs-params {
     color:  var(--danger-color)
 }
 
 .hljs-meta .hljs-string, .hljs-regexp, .hljs-string, .hljs-number {
-    color: var(--dark-color);
-    @apply dark:text-gray-400
+    color: #00A36C
 }
 
 .hljs-built_in, .hljs-symbol {

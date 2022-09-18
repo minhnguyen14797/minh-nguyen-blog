@@ -2,7 +2,9 @@ import Link from "next/link"
 import styles from '../styles/LogoHover.module.css'
 import fadeStyles from '../styles/FadeInAnimation.module.css'
 import { useState } from "react"
-import useToggleTheme, { toggleTheme } from "../utils/useToggleTheme"
+import { useTheme } from "../providers/ThemeProvider"
+
+
 
 const Logo = () => {
     const logoHoverStyles = styles['hover-underline-animation']
@@ -24,45 +26,13 @@ const NavList = ({children}) => {
 const NavItem = ({children, href}) => {
     const itemHoverStyles = 'hover:text-primary'
     return(
-        <li className={` tracking-wider lg:px-3 md:px-1 mx-[4%] rounded-lg ${itemHoverStyles}`}>
+        <li className={`tracking-wider lg:px-3 md:px-1 mx-[4%] rounded-lg ${itemHoverStyles}`}>
             <Link href={href}>{children}</Link>
         </li>
     )
 } 
 
-// const SubscribeButton = () => {
-//     const buttonHoverStyles = 'hover:bg-red-600'
-//     const [text, setText] = useState("Subscribe")
-    
-//     const handleSubscribe = () => {
-//         setText("JK!!")
-//         setTimeout(() => {
-//             setText("Subscribe")
-//         }, 2000)
-//     }
-
-//     return(
-//         <button 
-//             onClick={handleSubscribe}
-//             className={`w-[120px] bg-danger text-light py-2 px-4 rounded-lg lg:inline md:inline sm:hidden hidden ${buttonHoverStyles}`}>
-//             {text}
-//         </button>
-//     )
-// }
-
-// const BurgerSubscribeButton = () => {
-//     const buttonHoverStyles = 'hover:bg-red-600'
-//     return(
-//         <button className={`bg-danger text-light py-1 px-3 rounded-lg ${buttonHoverStyles}`}>
-//             Subscribe
-//         </button>
-//     )
-// }
-
-
 const Burger = ({open, setOpen}) => {
-    
-    
     const handleShowNav = () => {
         if(open) {
             setOpen(false)
@@ -85,7 +55,6 @@ const Burger = ({open, setOpen}) => {
 }
 
 const NavBurger = ({children}) => {
-
     return (
         <ul className={`flex flex-col items-start px-10 md:hidden 
                         lg:hidden sm:block ${fadeStyles.burgerFadeIn}`}>
@@ -103,28 +72,8 @@ const NavItemBurger = ({children, href}) => {
     )
 } 
 
-const DarkModeToggle = () => {
-    const darkHoverStyles = 'hover:bg-sky-500'
-    const toggleDMS = 'dark:bg-light dark:text-dark'
-    const [theme, setTheme] = useToggleTheme()
-    
-    function handleDarkModeToggle() {
-        toggleTheme(theme, setTheme)
-    }
-    
-    return (
-        <button 
-            onClick={handleDarkModeToggle} 
-            className={
-                `font-bold py-1 px-3 rounded-full bg-secondary text-white w-[35px] h-[35px] hidden 
-                justify-center items-center lg:flex md:flex sm:hidden ${darkHoverStyles} ${toggleDMS}`
-            }>
-            {theme == 'light' ? "L" : "D"}
-        </button>
-    )
-}
-
 export default function Navbar() {
+    const { ThemeToggle, BurgerThemeToggle } = useTheme()
     const navbarStyles = `py-3 px-10 flex-row justify-between flex items-center`
     const [open, setOpen] = useState(false)
 
@@ -161,8 +110,7 @@ export default function Navbar() {
                     <AllNavItems />
                 </NavList>
                 <div className="flex flex-row items-center justify-end w-[75%]">
-                    {/* <SubscribeButton /> */}
-                    <DarkModeToggle />
+                    <ThemeToggle />
                     <Burger open={open} setOpen={setOpen} />
                 </div>
             </nav>
@@ -170,7 +118,8 @@ export default function Navbar() {
                 open ? 
                 <NavBurger>
                     <AllNavItems type='burger'/>
-                    {/* <BurgerSubscribeButton /> */}
+                    <BurgerThemeToggle />
+                    
                 </NavBurger> :
                 ""
             }
