@@ -3,10 +3,11 @@ import { getAllTitles } from "../utils/posts"
 import BaseLayout from "../components/BaseLayout"
 import Card from "../components/Card"
 import Tag from "../components/Tag"
+import { getTagLinks } from "../utils/tags"
 
 
-export default function Home({res}) {
-  const AllPosts = res.map((postData, index) => {
+export default function Home({ allTitles, allTagLinks }) {
+  const AllPosts = allTitles.map((postData, index) => {
     return(
       <Card 
         data={postData}
@@ -15,29 +16,13 @@ export default function Home({res}) {
     )
   })
 
-  const AllTags = [
-    ['#', 'Minh'], 
-    ['#', 'CSS'], 
-    ['#', 'React'], 
-    ['#', 'JS'],
-    ['#', 'HTML'],
-    ['#', 'NextJS'],
-    ['#', 'Art'],
-    ['#', 'Food'],
-    ['#', 'Minh'], 
-    ['#', 'CSS'], 
-    ['#', 'React'], 
-    ['#', 'JS'],
-    ['#', 'HTML'],
-    ['#', 'NextJS'],
-    ['#', 'Art']
-  ].map((data, index) => {
+  const AllTags = allTagLinks.map((data, index) => {
     return (
       <Tag
         key={index}
-        href={data[0]}
+        href={data.link}
       >
-        {data[1]}
+        {data.tag.toUpperCase()}
       </Tag>
     )
   })
@@ -60,7 +45,7 @@ export default function Home({res}) {
             </div>
 
             <div className="w-[40%] pl-5 hidden flex-col xl:flex lg:flex md:flex sm:hidden xs:hidden">
-              <h3 className={sectionStyles}>Coming soon!!</h3>
+              <h3 className={sectionStyles}>Tags</h3>
               <div className="flex flex-wrap">
                 {AllTags}
               </div>
@@ -78,8 +63,14 @@ export default function Home({res}) {
 
 
 export const getStaticProps = async () => {
-  const res = await getAllTitles()
+  const allTitles = await getAllTitles()
+  const allTagLinks = await getTagLinks()
   
-  return {props: res}
+  return {
+    props: {
+        allTitles, 
+        allTagLinks
+      }
+  }
 }
 

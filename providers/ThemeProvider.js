@@ -17,20 +17,22 @@ export function ThemeProvider({children}) {
 
     
     const hoverStyles = 'hover:bg-warning/50 hover:dark:bg-light/25'
-    const transitionStyles = `transition duration-200 ease-in-out ${styles.iconFadeUp}`
+    const transitionStyles = 'transition duration-200 ease-in-out'
     const baseStyles = `rounded-full w-[35px] h-[35px] justify-center items-center ${transitionStyles} ${hoverStyles}`
     const display = theme == 'light' ?
         <Image 
             src='/sun.svg'
             width={25}
             height={25}
+            alt='sun-icon'
         /> : 
         <Image 
-        src='/moon.svg'
-        width={25}
-        height={25}
-    />
-
+            src='/moon.svg'
+            width={25}
+            height={25}
+            alt='moon-icon'
+        />
+    
     const ThemeToggle = () => {
         return (
             <button 
@@ -39,7 +41,6 @@ export function ThemeProvider({children}) {
                     `${baseStyles} lg:flex md:flex sm:hidden hidden`
                 }>
                 {display}
-                
             </button>
         )
     }

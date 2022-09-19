@@ -56,10 +56,5 @@ export async function getAllTitles() {
     res.sort((a, b) => {
         return (new Date(b.date) - new Date(a.date)) 
     })
-    return {res}
-}
-
-function sortByDate(arr) {
-    const res = arr.sort((a, b) => {return new Date(b.date) - new Date(a.date)})
     return res
 }
