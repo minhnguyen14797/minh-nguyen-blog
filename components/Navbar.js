@@ -56,7 +56,7 @@ const Burger = ({open, setOpen}) => {
 
 const NavBurger = ({children}) => {
     return (
-        <ul className={`flex flex-col items-start px-10 md:hidden 
+        <ul className={`flex flex-col items-start px-10 md:hidden pb-3
                         lg:hidden sm:block ${fadeStyles.burgerFadeIn}`}>
             {children}
         </ul>

@@ -1,6 +1,7 @@
 import useToggleTheme, { toggleTheme } from "../utils/useToggleTheme"
 import React, { useContext } from "react"
 import Image from "next/image"
+import styles from '../styles/FadeInAnimation.module.css'
 
 const ThemeContext = React.createContext()
 
@@ -16,7 +17,7 @@ export function ThemeProvider({children}) {
 
     
     const hoverStyles = 'hover:bg-warning/50 hover:dark:bg-light/25'
-    const transitionStyles = 'transition duration-200 ease-in-out'
+    const transitionStyles = `transition duration-200 ease-in-out ${styles.iconFadeUp}`
     const baseStyles = `rounded-full w-[35px] h-[35px] hidden justify-center items-center ${transitionStyles} ${hoverStyles}`
     const display = theme == 'light' ?
         <Image 
