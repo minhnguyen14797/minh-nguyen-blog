@@ -18,7 +18,7 @@ export function ThemeProvider({children}) {
     
     const hoverStyles = 'hover:bg-warning/50 hover:dark:bg-light/25'
     const transitionStyles = `transition duration-200 ease-in-out ${styles.iconFadeUp}`
-    const baseStyles = `rounded-full w-[35px] h-[35px] hidden justify-center items-center ${transitionStyles} ${hoverStyles}`
+    const baseStyles = `rounded-full w-[35px] h-[35px] justify-center items-center ${transitionStyles} ${hoverStyles}`
     const display = theme == 'light' ?
         <Image 
             src='/sun.svg'
@@ -36,7 +36,7 @@ export function ThemeProvider({children}) {
             <button 
                 onClick={handleThemeToggle} 
                 className={
-                    `${baseStyles} lg:flex md:flex sm:hidden`
+                    `${baseStyles} lg:flex md:flex sm:hidden hidden`
                 }>
                 {display}
                 
@@ -49,7 +49,7 @@ export function ThemeProvider({children}) {
             <button 
                 onClick={handleThemeToggle} 
                 className={
-                    `${baseStyles} lg:hidden md:hidden sm:flex`
+                    `${baseStyles} lg:hidden md:hidden sm:flex flex`
                 }>
                 {display}
             </button>
