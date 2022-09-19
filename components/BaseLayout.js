@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import Footer from './Footer'
 import Navbar from './Navbar'
 
@@ -12,7 +11,7 @@ export default function BaseLayout({children}) {
 
   return (
     <div className={baseFlexStyles}>
-        <header className="sticky top-0 backdrop-blur-[15px]">
+        <header className="sticky top-0 backdrop-blur-[15px] z-[1000]">
           <Navbar />
         </header>
 
